@@ -3,28 +3,27 @@
 #Usage of twitters API
 import requests
 import twitter
+import credentials
 
 
-class twitter:
-    API = twitter.api(consumer_key=[consumer key],
-                  consumer_secret=[consumer secret],
-                  access_token_key=[access token],
-                  access_token_secret=[access token secret])
+creds = credentials.credentials
+
+api = twitter.Api(consumer_key=creds.consumer_key,
+              consumer_secret=creds.consumer_secret,
+              access_token_key=creds.access_token_key,
+              access_token_secret=creds.access_token_secret)
 
 
-    usage_url = "https://api.twitter.com/1.1/trends/place.json"
+get_trends_url = "https://api.twitter.com/1.1/trends/place.json"
 
-    def __init__(self):
-        return
+def __init__():
+    return
 
 
-    def getTrends(self):
-        data = requests.get("https://api.twitter.com/1.1/trends/place.json?id=1")
-        if(data.status_code != 200):
-            print("Error getting data")
-        data.json()
+def getTrends():
+    trends = twitter.api.Api.GetTrendsCurrent(api)
 
-        print(data)
-        return
+    print(trends)
+    return
 
-    def sendRequest(self, requestString):
+
